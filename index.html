@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundraiser App - Avril Auto</title>
+
+    <!-- ========================================== -->
+    <!-- MULAI: SEO & OPEN GRAPH (UNTUK THUMBNAIL WA) -->
+    <!-- ========================================== -->
+    <meta name="description" content="Sistem CRM Terintegrasi: Kwitansi WhatsApp Otomatis & Laporan PDF Instan dalam 1 Klik.">
+    
+    <!-- SEO & Social Media Preview (Optimasi 1:1) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dany29326-prog.github.io/fundraiser/">
+<meta property="og:title" content="Fundraiser Smart System - Otomasi Real-time">
+<meta property="og:description" content="Kelola donasi 80% lebih cepat dengan kwitansi WA otomatis & laporan PDF instan.">
+
+<!-- Link Gambar Thumbnail Baru (1:1 Ratio) -->
+<meta property="og:image" content="https://github.com/dany29326-prog/fundraiser/blob/main/thumbnail-pro.png?raw=true">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1080">
+<meta property="og:image:height" content="1080">
+
+<!-- Twitter Card (Summary mode cocok untuk 1:1) -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fundraiser Smart System">
+<meta name="twitter:image" content="https://github.com/dany29326-prog/fundraiser/blob/main/thumbnail-pro.png?raw=true">
+    <!-- ========================================== -->
+    <!-- SELESAI: SEO & OPEN GRAPH                  -->
+    <!-- ========================================== -->
+
+    <!-- Konfigurasi PWA (Mobile App Behavior) -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#059669">
+    <meta name="apple-mobile-web-app-title" content="Fundraiser">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2904/2904879.png">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2904/2904879.png">
+
+    <!-- External Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+        .hidden { display: none !important; }
+        .animate-in { animation: fadeInUp 0.4s ease-out; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen text-slate-800">
+
+    <div id="loginPage" class="flex flex-col items-center justify-center min-h-screen p-6 animate-in">
+        <div class="bg-white p-8 rounded-[2.5rem] shadow-2xl shadow-emerald-100 w-full max-w-sm text-center border border-emerald-50">
+            <div class="w-20 h-20 bg-emerald-600 rounded-3xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-emerald-200">
+                <i class="fa fa-rocket text-white text-3xl"></i>
+            </div>
+            <h1 class="text-2xl font-extrabold text-slate-900 mb-1 tracking-tight">AVRIL AUTO</h1>
+            <p class="text-slate-400 text-[10px] mb-8 tracking-[0.2em] uppercase">Fundraiser System</p>
+            
+            <div class="space-y-4">
+                <div class="text-left">
+                    <label class="text-[10px] font-extrabold text-slate-400 ml-2 mb-1 block uppercase">Nama Petugas</label>
+                    <input type="text" id="nama" placeholder="Contoh: Ahmad Fauzi" class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:ring-2 focus:ring-emerald-500 transition-all text-sm">
+                </div>
+                <div class="text-left">
+                    <label class="text-[10px] font-extrabold text-slate-400 ml-2 mb-1 block uppercase">Kata Sandi</label>
+                    <div class="relative">
+                        <input type="password" id="password" placeholder="••••••••" class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:ring-2 focus:ring-emerald-500 transition-all text-sm">
+                        <button onclick="togglePassword()" class="absolute right-4 top-4 text-slate-400"><i id="eyeIcon" class="fa fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="flex items-center ml-2 py-2">
+                    <input type="checkbox" id="rememberMe" class="w-4 h-4 text-emerald-600 border-slate-300 rounded">
+                    <label for="rememberMe" class="ml-2 text-xs font-bold text-slate-500">Ingat Saya</label>
+                </div>
+                <button onclick="handleAuth()" id="btnLogin" class="w-full bg-emerald-600 text-white font-bold py-4 rounded-2xl shadow-xl shadow-emerald-100 hover:bg-emerald-700 active:scale-95 transition-all uppercase text-sm">Masuk ke Sistem</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="dashboardPage" class="hidden animate-in">
+        <div class="bg-emerald-600 p-8 rounded-b-[3.5rem] shadow-lg text-white relative overflow-hidden">
+            <div class="relative z-10">
+                <p class="text-emerald-100 text-[10px] font-bold uppercase mb-1">Petugas Aktif</p>
+                <h2 id="userDisplay" class="text-2xl font-extrabold">---</h2>
+            </div>
+            <div class="absolute -right-10 -top-10 w-40 h-40 bg-emerald-500 rounded-full opacity-20"></div>
+        </div>
+
+        <div class="p-6 -mt-8 relative z-20 space-y-6">
+            <div class="bg-white p-7 rounded-[2rem] shadow-xl border border-white">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <p class="text-slate-400 text-[10px] font-black uppercase mb-1">Capaian Bulan Ini</p>
+                        <h3 id="totalBulan" class="text-3xl font-extrabold text-slate-900">Rp 0</h3>
+                    </div>
+                    <div id="persentase" class="bg-emerald-50 text-emerald-600 px-4 py-2 rounded-2xl text-sm font-bold">0%</div>
+                </div>
+                <div class="w-full bg-slate-100 h-4 rounded-full overflow-hidden mb-3">
+                    <div id="progressBar" class="bg-emerald-500 h-full transition-all duration-1000" style="width: 0%"></div>
+                </div>
+                <div class="flex justify-between text-[11px] font-bold uppercase">
+                    <span class="text-slate-400">Target: <span id="targetDisplay" class="text-slate-600">Rp 0</span></span>
+                    <span id="hariIniDisplay" class="text-emerald-600">Hari Ini: Rp 0</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="toggleForm()" class="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col items-center group active:bg-emerald-50 transition-all">
+                    <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-3"><i class="fa fa-plus-circle text-2xl"></i></div>
+                    <span class="text-xs font-black text-slate-700 uppercase">Donasi Baru</span>
+                </button>
+
+                <button onclick="openDonaturPage()" class="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col items-center group active:bg-blue-50 transition-all">
+                    <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-3"><i class="fa fa-users text-2xl"></i></div>
+                    <span class="text-xs font-black text-slate-700 uppercase">Data Donatur</span>
+                </button>
+
+                <button onclick="downloadLaporanPDF()" class="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col items-center group active:bg-orange-50 transition-all col-span-2">
+                    <div class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600 mb-3">
+                        <i class="fa fa-file-pdf text-2xl"></i>
+                    </div>
+                    <span class="text-xs font-black text-slate-700 uppercase">Download Laporan Hari Ini</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="formDonasi" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-4 z-50">
+        <div class="bg-white w-full max-w-md rounded-t-[3rem] sm:rounded-[2.5rem] p-8 shadow-2xl animate-in">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-xl font-extrabold text-slate-900">Input Transaksi</h3>
+                <button onclick="toggleForm()" class="w-10 h-10 bg-slate-50 rounded-full text-slate-400 hover:text-red-500"><i class="fa fa-times"></i></button>
+            </div>
+            <div class="space-y-4">
+                <select id="jenisDonatur" onchange="aturFormDonatur()" class="w-full p-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none font-bold">
+                    <option value="Umum">📦 Donatur Umum (Input Manual)</option>
+                    <option value="Rutin">🤝 Donatur Rutin (Cari Database)</option>
+                </select>
+                <div id="areaInputDonatur" class="space-y-4">
+                    <input type="text" id="namaDonatur" placeholder="Nama Lengkap Donatur" class="w-full p-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none">
+                    <input type="number" id="noHpDonatur" placeholder="No. WhatsApp (Contoh: 6281...)" class="w-full p-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none">
+                </div>
+                <input type="number" id="nominal" placeholder="Nominal Rp" class="w-full p-4 bg-emerald-50 border border-emerald-100 rounded-2xl outline-none font-bold text-emerald-700">
+                <select id="kategori" class="w-full p-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none">
+                    <option value="Infak">Infak</option>
+                    <option value="Zakat">Zakat</option>
+                    <option value="Wakaf">Wakaf</option>
+                </select>
+                <button onclick="handleSubmitDonasi()" id="btnSubmit" class="w-full bg-emerald-600 text-white font-bold py-5 rounded-2xl shadow-xl active:scale-95 transition-all">SIMPAN & GENERATE WA</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="donaturPage" class="hidden min-h-screen bg-slate-50 p-4 pb-24">
+        <div class="flex justify-between items-center mb-6">
+            <button onclick="backToDashboard()" class="w-10 h-10 flex items-center justify-center text-slate-500 bg-white rounded-xl shadow-sm"><i class="fa fa-arrow-left"></i></button>
+            <h2 class="text-lg font-black text-slate-800 uppercase">Database Donatur</h2>
+            <button onclick="tambahDonatur()" class="bg-emerald-600 text-white w-10 h-10 rounded-xl shadow-lg flex items-center justify-center active:scale-95 transition-all"><i class="fa fa-plus"></i></button>
+        </div>
+        <div class="relative mb-6">
+            <i class="fa fa-search absolute left-4 top-4 text-slate-300"></i>
+            <input type="text" id="filterDonatur" onkeyup="filterTabelDonatur()" placeholder="Cari nama..." class="w-full p-4 pl-12 rounded-2xl border-none shadow-sm text-sm outline-none">
+        </div>
+        <div id="listDonaturContainer" class="space-y-3"></div>
+    </div>
+
+    <script>
+        const API_URL = "https://script.google.com/macros/s/AKfycbyN8xU5ZuMIzLjwD7p2aA0R3VpmNavn1cvQi3YlfTdScyYwkHBQU_0UhHvJ-sPTIQNF4w/exec"; 
+        let USER_SESSION = null;
+        let SELECTED_DONATUR_DATA = null;
+
+    // --- MULAI: FUNGSI FORMAT WA (STEP A) ---
+    function formatWA(noHp) {
+        if (!noHp) return '';
+        // Sanitasi: Ambil hanya angka saja
+        let cleaned = noHp.toString().replace(/[^0-9]/g, ''); 
+        // Logika Konversi: 08xx atau 8xx menjadi 628xx
+        if (cleaned.startsWith('0')) {
+            return '62' + cleaned.substring(1);
+        } else if (cleaned.startsWith('8')) {
+            return '62' + cleaned;
+        }
+        return cleaned;
+    }
+    // --- SELESAI: FUNGSI FORMAT WA ---
+
+    window.onload = function() {
+        const savedNama = localStorage.getItem('fundraiser_nama');
+        const savedPass = localStorage.getItem('fundraiser_pass');
+        if (savedNama && savedPass) {
+            document.getElementById('nama').value = savedNama;
+            document.getElementById('password').value = savedPass;
+            document.getElementById('rememberMe').checked = true;
+        }
+    };
+
+        window.onload = function() {
+            const savedNama = localStorage.getItem('fundraiser_nama');
+            const savedPass = localStorage.getItem('fundraiser_pass');
+            if (savedNama && savedPass) {
+                document.getElementById('nama').value = savedNama;
+                document.getElementById('password').value = savedPass;
+                document.getElementById('rememberMe').checked = true;
+            }
+        };
+
+        function togglePassword() {
+            const passInput = document.getElementById('password');
+            const eyeIcon = document.getElementById('eyeIcon');
+            if (passInput.type === "password") {
+                passInput.type = "text";
+                eyeIcon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                passInput.type = "password";
+                eyeIcon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+
+        async function handleAuth() {
+            const nama = document.getElementById('nama').value;
+            const password = document.getElementById('password').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+
+            if(!nama || !password) return Swal.fire('Opps!', 'Lengkapi data login!', 'warning');
+            const btn = document.getElementById('btnLogin');
+            btn.disabled = true; btn.innerHTML = '<i class="fa fa-circle-notch animate-spin"></i>';
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({ action: 'login', payload: { nama, password } })
+                });
+                const res = await response.json();
+                if(res.success) {
+                    if(rememberMe) {
+                        localStorage.setItem('fundraiser_nama', nama);
+                        localStorage.setItem('fundraiser_pass', password);
+                    }
+                    USER_SESSION = res.data;
+                    document.getElementById('loginPage').classList.add('hidden');
+                    document.getElementById('dashboardPage').classList.remove('hidden');
+                    initDashboard();
+                } else { Swal.fire('Gagal', 'Nama/Password salah', 'error'); }
+            } catch (e) { Swal.fire('Error', 'Cek internet Kak', 'error'); }
+            finally { btn.disabled = false; btn.innerText = "Masuk ke Sistem"; }
+        }
+
+        async function initDashboard() {
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({ action: 'getDashboard', payload: { fundraiserId: USER_SESSION.fundraiserId } })
+                });
+                const res = await response.json();
+                const d = res.data;
+                document.getElementById('userDisplay').innerText = USER_SESSION.nama;
+                document.getElementById('totalBulan').innerText = "Rp " + d.totalBulanIni.toLocaleString('id-ID');
+                document.getElementById('targetDisplay').innerText = "Rp " + d.target.toLocaleString('id-ID');
+                document.getElementById('hariIniDisplay').innerText = "Hari Ini: Rp " + d.totalHariIni.toLocaleString('id-ID');
+                document.getElementById('persentase').innerText = d.capaian;
+                document.getElementById('progressBar').style.width = d.capaian;
+            } catch (e) { console.error("Dashboard error"); }
+        }
+
+        function aturFormDonatur() {
+            const jenis = document.getElementById('jenisDonatur').value;
+            const container = document.getElementById('areaInputDonatur');
+            if (jenis === 'Rutin') {
+                container.innerHTML = `
+                    <div class="flex gap-2 animate-in">
+                        <input type="text" id="searchKeyword" placeholder="Nama/ID/HP..." class="flex-1 p-4 bg-blue-50 border border-blue-100 rounded-2xl outline-none text-sm">
+                        <button type="button" onclick="cariDonaturRutin()" class="bg-blue-600 text-white px-6 rounded-2xl font-bold text-xs">CARI</button>
+                    </div>
+                    <div id="hasilPencarian" class="hidden mt-3 p-4 bg-slate-100 rounded-2xl text-[11px] border-l-4 border-blue-500"></div>`;
+            } else {
+                SELECTED_DONATUR_DATA = null;
+                container.innerHTML = `
+                    <input type="text" id="namaDonatur" placeholder="Nama Lengkap" class="w-full p-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none">
+                    <input type="number" id="noHpDonatur" placeholder="No. WA (628...)" class="w-full p-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none">`;
+            }
+        }
+
+        async function cariDonaturRutin() {
+            const keyword = document.getElementById('searchKeyword').value;
+            const infoBox = document.getElementById('hasilPencarian');
+            if(!keyword) return;
+            infoBox.innerHTML = "🔍 Mencari..."; infoBox.classList.remove('hidden');
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({ action: 'searchDonatur', payload: { keyword } })
+                });
+                const res = await response.json();
+                if (res.success && res.data.found) {
+                    SELECTED_DONATUR_DATA = res.data;
+                    infoBox.innerHTML = `<p class="text-blue-700 font-bold">✅ DITEMUKAN!</p><p>${res.data.id} - ${res.data.nama}</p>`;
+                } else { infoBox.innerHTML = `<p class="text-red-500">❌ Tidak ditemukan.</p>`; }
+            } catch (e) { infoBox.innerHTML = "Error koneksi."; }
+        }
+
+        async function handleSubmitDonasi() {
+            const jenis = document.getElementById('jenisDonatur').value;
+            let nama, noHp, idDonatur = "";
+            if (jenis === 'Rutin') {
+                if (!SELECTED_DONATUR_DATA) return Swal.fire('Opps!', 'Cari donatur dulu!', 'warning');
+                nama = SELECTED_DONATUR_DATA.nama; noHp = SELECTED_DONATUR_DATA.noHp; idDonatur = SELECTED_DONATUR_DATA.id;
+            } else {
+                nama = document.getElementById('namaDonatur').value; noHp = document.getElementById('noHpDonatur').value;
+                if (!nama || !noHp) return Swal.fire('Opps!', 'Lengkapi Nama & WA!', 'warning');
+            }
+            const btn = document.getElementById('btnSubmit');
+            const nominal = document.getElementById('nominal').value;
+            if(!nominal) return Swal.fire('Opps!', 'Isi nominal dulu Kak!', 'warning');
+            btn.disabled = true; btn.innerText = "Menyimpan...";
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({ action: 'submitTransaksi', payload: { fundraiserId: USER_SESSION.fundraiserId, namaFundraiser: USER_SESSION.nama, jenisDonatur: jenis, namaDonatur: nama, noHpDonatur: noHp, idDonatur: idDonatur, nominal: nominal, kategori: document.getElementById('kategori').value } })
+                });
+                const res = await response.json();
+                if(res.success) { Swal.fire('Sukses!', 'Donasi tercatat.', 'success').then(() => { window.open(res.data.waLink, '_blank'); location.reload(); }); }
+            } catch (e) { Swal.fire('Error', 'Gagal simpan.', 'error'); }
+            finally { btn.disabled = false; btn.innerText = "SIMPAN & GENERATE WA"; }
+        }
+
+        async function openDonaturPage() {
+            document.getElementById('dashboardPage').classList.add('hidden');
+            document.getElementById('donaturPage').classList.remove('hidden');
+            const container = document.getElementById('listDonaturContainer');
+            container.innerHTML = `<div class="text-center p-10 text-slate-400"><i class="fa fa-circle-notch animate-spin text-2xl"></i></div>`;
+            try {
+                const response = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'getDonaturList' }) });
+                const res = await response.json();
+                if(res.success) renderDonaturList(res.data);
+            } catch (e) { Swal.fire('Error', 'Gagal ambil data', 'error'); }
+        }
+
+        function renderDonaturList(data) {
+            const container = document.getElementById('listDonaturContainer');
+            container.innerHTML = data.length ? "" : "<p class='text-center text-slate-400 text-xs'>Belum ada data.</p>";
+            data.forEach(item => {
+                container.innerHTML += `
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 flex justify-between items-center donatur-item animate-in">
+                        <div>
+                            <p class="text-[10px] font-bold text-emerald-600 uppercase">${item[0]}</p>
+                            <p class="font-bold text-slate-800">${item[1]}</p>
+                            <p class="text-xs text-slate-500">${item[2]}</p>
+                        </div>
+                        <a href="https://wa.me/${item[2]}" target="_blank" class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center"><i class="fab fa-whatsapp text-lg"></i></a>
+                    </div>`;
+            });
+        }
+
+        function backToDashboard() { document.getElementById('donaturPage').classList.add('hidden'); document.getElementById('dashboardPage').classList.remove('hidden'); }
+        function toggleForm() { document.getElementById('formDonasi').classList.toggle('hidden'); }
+        function filterTabelDonatur() {
+            const input = document.getElementById('filterDonatur').value.toUpperCase();
+            const items = document.getElementsByClassName('donatur-item');
+            for (let i = 0; i < items.length; i++) {
+                const text = items[i].innerText.toUpperCase();
+                items[i].style.display = text.indexOf(input) > -1 ? "" : "none";
+            }
+        }
+
+        function tambahDonatur() {
+    Swal.fire({
+        title: 'Donatur Baru',
+        html: `<input id="sw-nama" class="swal2-input" placeholder="Nama Lengkap">
+               <input id="sw-hp" class="swal2-input" placeholder="WhatsApp (08...)">
+               <input id="sw-almt" class="swal2-input" placeholder="Alamat (Opsional)">`,
+        confirmButtonText: 'Simpan', 
+        showCancelButton: true,
+        preConfirm: () => {
+            const nama = document.getElementById('sw-nama').value; 
+            const hp = document.getElementById('sw-hp').value;
+            
+            if(!nama || !hp) return Swal.showValidationMessage('Nama & WA wajib diisi!');
+            
+            // --- LOGIKA ARCHITECT: SANITASI DI HULU ---
+            // Kita gunakan formatWA agar yang dikirim ke database sudah 62xxx
+            const noHpClean = formatWA(hp); 
+            
+            return { 
+                nama: nama, 
+                noHp: noHpClean, 
+                alamat: document.getElementById('sw-almt').value 
+            }
+        }
+    }).then(async (res) => {
+        if (res.isConfirmed) {
+            Swal.fire({title: 'Menyimpan...', didOpen: () => Swal.showLoading()});
+            
+            // Payload yang dikirim sekarang sudah bersih (noHp: 628xxx)
+            const resp = await fetch(API_URL, { 
+                method: 'POST', 
+                body: JSON.stringify({ 
+                    action: 'addDonatur', 
+                    payload: res.value 
+                }) 
+            });
+            
+            const final = await resp.json();
+            if(final.success) { 
+                Swal.fire('Berhasil', 'Donatur ditambahkan', 'success'); 
+                // Pastikan fungsi ini ada untuk merefresh daftar di layar
+                if (typeof openDonaturPage === "function") openDonaturPage(); 
+            } else {
+                Swal.fire('Gagal', final.message, 'error');
+            }
+        }
+    });
+}
+        async function downloadLaporanPDF() {
+    // 1. Munculkan Popup pilihan tanggal
+    const { value: formValues } = await Swal.fire({
+        title: 'Pilih Periode Laporan',
+        html:
+            '<label class="text-xs font-bold text-slate-400 uppercase">Tanggal Mulai</label>' +
+            '<input id="tgl-mulai" type="date" class="swal2-input">' +
+            '<label class="text-xs font-bold text-slate-400 uppercase">Tanggal Sampai</label>' +
+            '<input id="tgl-sampai" type="date" class="swal2-input">',
+        focusConfirm: false,
+        showCancelButton: true,
+        confirmButtonText: 'Generate PDF',
+        preConfirm: () => {
+            return {
+                startDate: document.getElementById('tgl-mulai').value,
+                endDate: document.getElementById('tgl-sampai').value
+            }
+        }
+    });
+
+    if (!formValues || !formValues.startDate || !formValues.endDate) return;
+
+    Swal.fire({
+        title: 'Menyiapkan PDF...',
+        html: 'Merangkum data periode ' + formValues.startDate + ' s/d ' + formValues.endDate,
+        allowOutsideClick: false,
+        didOpen: () => Swal.showLoading()
+    });
+
+    try {
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            body: JSON.stringify({ 
+                action: 'downloadLaporan', 
+                payload: { 
+                    fundraiserId: USER_SESSION.fundraiserId, 
+                    namaFundraiser: USER_SESSION.nama,
+                    startDate: formValues.startDate, // YYYY-MM-DD
+                    endDate: formValues.endDate      // YYYY-MM-DD
+                } 
+            })
+        });
+        const res = await response.json();
+        
+        if(res.success) {
+            const link = document.createElement('a');
+            link.href = 'data:application/pdf;base64,' + res.data.base64;
+            link.download = res.data.fileName;
+            link.click();
+            Swal.fire('Berhasil!', 'Laporan periode berhasil diunduh.', 'success');
+        } else {
+            throw new Error(res.message);
+        }
+    } catch (e) {
+        Swal.fire('Gagal', 'Terjadi kesalahan: ' + e.message, 'error');
+    }
+}
+        // --- SAMPAI DI SINI ---
+
+    </script>
+</body>
+</html>
