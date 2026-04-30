@@ -58,68 +58,59 @@
 <body class="bg-slate-50 min-h-screen text-slate-800">
 
     <!-- === BAGIAN LOGIN PAGE: BRANDING AL FURQON === -->
+<!-- === LOGIN PAGE: FINAL CLEAN VERSION === -->
 <div id="loginPage" class="flex flex-col items-center justify-center min-h-screen p-6 animate-in bg-slate-50">
     <div class="bg-white p-8 rounded-[2.5rem] shadow-2xl shadow-emerald-100 w-full max-w-sm text-center border border-emerald-50">
         
-        <!-- LOGO CONTAINER: Menggunakan Hijau Emerald yang Lebih Deep -->
-        <div class="w-20 h-20 bg-emerald-700 rounded-3xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-emerald-200">
-            <!-- IKON: Diganti dari Roket menjadi Tangan Sedekah (Hand Holding Heart) -->
-            <i class="fas fa-hand-holding-heart text-white text-3xl"></i>
+        <!-- HEADER: HANYA SATU LOGO DAN SATU JUDUL -->
+        <div class="text-center mb-10">
+            <!-- Kontainer Logo Gambar -->
+            <div class="w-28 h-28 bg-white rounded-[2.5rem] flex items-center justify-center mx-auto shadow-2xl shadow-emerald-100 mb-6 border-4 border-emerald-50 overflow-hidden transition-transform hover:scale-105 duration-300">
+                <img src="https://i.ibb.co.com/wFDBPfFs/Chat-GPT-Image-Apr-30-2026-03-41-39-PM.png" 
+                     alt="Logo Al Furqon" 
+                     class="w-full h-full object-contain p-3">
+            </div>
+            
+            <!-- Nama Lembaga -->
+            <h1 class="text-3xl font-black text-slate-900 mb-1 tracking-tighter uppercase">AL FURQON</h1>
+            <p class="text-emerald-700 text-[10px] tracking-[0.3em] font-extrabold uppercase">Rumah Sedekah Digital</p>
+            
+            <!-- Garis Aksen Halus -->
+            <div class="w-12 h-1.5 bg-emerald-600 mx-auto mt-4 rounded-full opacity-20"></div>
         </div>
-        
-        <!-- JUDUL: Identitas Baru -->
-        <h1 class="text-3xl font-black text-slate-900 mb-1 tracking-tighter uppercase">AL FURQON</h1>
-        
-        <!-- TAGLINE: Branding Rumah Sedekah -->
-        <p class="text-emerald-600 text-[10px] mb-8 tracking-[0.3em] font-bold uppercase">Rumah Sedekah Digital</p>
-        
-        <!-- FORM INPUT -->
-        <!-- === HEADER LOGO & BRANDING === -->
-<div class="text-center mb-10">
-    <!-- Kontainer Logo Premium -->
-    <div class="w-28 h-28 bg-white rounded-[2.5rem] flex items-center justify-center mx-auto shadow-2xl shadow-emerald-100 mb-6 border-4 border-emerald-50 overflow-hidden transition-transform hover:scale-105 duration-300">
-        <img src="https://i.ibb.co.com/wFDBPfFs/Chat-GPT-Image-Apr-30-2026-03-41-39-PM.png" 
-             alt="Logo Al Furqon" 
-             class="w-full h-full object-contain p-3">
-    </div>
-    
-    <!-- Nama Lembaga -->
-    <h1 class="text-3xl font-black text-slate-900 mb-1 tracking-tighter uppercase">AL FURQON</h1>
-    <p class="text-emerald-700 text-[10px] mb-8 tracking-[0.3em] font-extrabold uppercase">Rumah Sedekah Digital</p>
-</div>
 
-<!-- === FORM LOGIN === -->
-<div class="space-y-4">
-    <div class="text-left">
-        <label class="text-[10px] font-extrabold text-slate-400 ml-2 mb-1 block uppercase">Nama Petugas</label>
-        <input type="text" id="nama" placeholder="Masukkan Nama" 
-               class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:ring-2 focus:ring-emerald-600 transition-all text-sm font-medium">
-    </div>
-    
-    <div class="text-left">
-        <label class="text-[10px] font-extrabold text-slate-400 ml-2 mb-1 block uppercase">Kata Sandi</label>
-        <div class="relative">
-            <input type="password" id="password" placeholder="••••••••" 
-                   class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:ring-2 focus:ring-emerald-600 transition-all text-sm">
-            <button onclick="togglePassword()" class="absolute right-4 top-4 text-slate-400 hover:text-emerald-600 transition-colors">
-                <i id="eyeIcon" class="fa fa-eye"></i>
+        <!-- FORM INPUT -->
+        <div class="space-y-4">
+            <div class="text-left">
+                <label class="text-[10px] font-extrabold text-slate-400 ml-2 mb-1 block uppercase">Nama Petugas</label>
+                <input type="text" id="nama" placeholder="Masukkan Nama" 
+                       class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:ring-2 focus:ring-emerald-600 transition-all text-sm font-medium">
+            </div>
+            
+            <div class="text-left">
+                <label class="text-[10px] font-extrabold text-slate-400 ml-2 mb-1 block uppercase">Kata Sandi</label>
+                <div class="relative">
+                    <input type="password" id="password" placeholder="••••••••" 
+                           class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:ring-2 focus:ring-emerald-600 transition-all text-sm">
+                    <button onclick="togglePassword()" class="absolute right-4 top-4 text-slate-400">
+                        <i id="eyeIcon" class="fa fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="flex items-center ml-2 py-2">
+                <input type="checkbox" id="rememberMe" class="w-4 h-4 text-emerald-600 border-slate-300 rounded focus:ring-emerald-500">
+                <label for="rememberMe" class="ml-2 text-xs font-bold text-slate-500 cursor-pointer">Ingat Saya</label>
+            </div>
+            
+            <button onclick="handleAuth()" id="btnLogin" 
+                    class="w-full bg-emerald-700 text-white font-bold py-4 rounded-2xl shadow-xl shadow-emerald-100 hover:bg-emerald-800 active:scale-95 transition-all uppercase text-sm tracking-widest">
+                Masuk ke Sistem
             </button>
         </div>
-    </div>
-    
-    <div class="flex items-center ml-2 py-2">
-        <input type="checkbox" id="rememberMe" class="w-4 h-4 text-emerald-600 border-slate-300 rounded focus:ring-emerald-500">
-        <label for="rememberMe" class="ml-2 text-xs font-bold text-slate-500 cursor-pointer">Ingat Saya</label>
-    </div>
-    
-    <button onclick="handleAuth()" id="btnLogin" 
-            class="w-full bg-emerald-700 text-white font-bold py-4 rounded-2xl shadow-xl shadow-emerald-100 hover:bg-emerald-800 active:scale-95 transition-all uppercase text-sm tracking-widest">
-        Masuk ke Sistem
-    </button>
-</div>
-
-<!-- Footer Identitas -->
-<p class="mt-8 text-[9px] text-slate-300 font-bold tracking-widest uppercase text-center">© 2026 Al Furqon - Solo</p>
+        
+        <!-- FOOTER IDENTITAS -->
+        <p class="mt-8 text-[9px] text-slate-300 font-bold tracking-widest uppercase">© 2026 Al Furqon - Solo</p>
     </div>
 </div>
 
