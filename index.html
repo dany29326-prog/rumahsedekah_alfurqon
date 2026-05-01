@@ -231,14 +231,14 @@
     // --- SELESAI: FUNGSI FORMAT WA ---
 
     window.onload = function() {
-        const savedNama = localStorage.getItem('fundraiser_nama');
-        const savedPass = localStorage.getItem('fundraiser_pass');
-        if (savedNama && savedPass) {
-            document.getElementById('nama').value = savedNama;
-            document.getElementById('password').value = savedPass;
-            document.getElementById('rememberMe').checked = true;
-        }
-    };
+    const savedNama = localStorage.getItem('fundraiser_nama');
+    const savedPass = localStorage.getItem('fundraiser_pass');
+    if (savedNama && savedPass) {
+        document.getElementById('nama').value = savedNama;
+        document.getElementById('password').value = savedPass;
+        document.getElementById('rememberMe').checked = true;
+    }
+};
 
         window.onload = function() {
             const savedNama = localStorage.getItem('fundraiser_nama');
