@@ -263,7 +263,11 @@
             try {
                 const response = await fetch(API_URL, {
                     method: 'POST',
-                    body: JSON.stringify({ action: 'login', payload: { nama, password } })
+                    // HAPUS BARIS INI:
+// body: JSON.stringify({ action: 'login', payload: { nama, password } })
+
+// GANTI MENJADI SEPERTI INI:
+body: JSON.stringify({ action: 'login', nama: nama, password: password })
                 });
                 const res = await response.json();
                 if(res.success) {
@@ -350,8 +354,17 @@
             try {
                 const response = await fetch(API_URL, {
                     method: 'POST',
-                    body: JSON.stringify({ action: 'submitTransaksi', payload: { fundraiserId: USER_SESSION.fundraiserId, namaFundraiser: USER_SESSION.nama, jenisDonatur: jenis, namaDonatur: nama, noHpDonatur: noHp, idDonatur: idDonatur, nominal: nominal, kategori: document.getElementById('kategori').value } })
-                });
+                    body: JSON.stringify({ 
+    action: 'addTransaction', 
+    fundraiserId: USER_SESSION.fundraiserId, 
+    namaFundraiser: USER_SESSION.nama, 
+    jenisDonatur: jenis, 
+    namaDonatur: nama, 
+    noHpDonatur: noHp, 
+    idDonatur: idDonatur, 
+    nominal: nominal, 
+    kategori: document.getElementById('kategori').value 
+})
                 const res = await response.json();
                 if(res.success) { Swal.fire('Sukses!', 'Donasi tercatat.', 'success').then(() => { window.open(res.data.waLink, '_blank'); location.reload(); }); }
             } catch (e) { Swal.fire('Error', 'Gagal simpan.', 'error'); }
