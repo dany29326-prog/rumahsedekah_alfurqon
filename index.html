@@ -499,11 +499,28 @@
             throw new Error(res.message);
         }
     } catch (e) {
-        Swal.fire('Gagal', 'Terjadi kesalahan: ' + e.message, 'error');
+       Swal.fire('Gagal', 'Terjadi kesalahan: ' + e.message, 'error');
     }
 }
-        // --- SAMPAI DI SINI ---
 
-    </script>
+// ==========================================
+// REGISTRASI SERVICE WORKER (AL FURQON PWA)
+// ==========================================
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+            .then(reg => {
+                console.log('✅ Service Worker Al Furqon Berhasil Terdaftar:', reg.scope);
+            })
+            .catch(err => {
+                console.error('❌ Registrasi Service Worker Gagal:', err);
+            });
+    });
+}
+</script>
+<!-- Footer Identitas Global -->
+<footer class="hidden">
+    <p>© 2026 Al Furqon - Solo & Tawangmangu</p>
+</footer>
 </body>
 </html>
