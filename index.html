@@ -3,52 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- ========================================== -->
-<!-- MULAI: IDENTITAS, PWA & SEO AL FURQON -->
-<!-- ========================================== -->
-<title>Al Furqon - Rumah Sedekah Digital</title>
-<meta name="description" content="Sistem CRM Terintegrasi: Kwitansi WhatsApp Otomatis & Laporan PDF Instan dalam 1 Klik.">
+    <title>Al Furqon - Rumah Sedekah Digital</title>
+    <meta name="description" content="Sistem CRM Terintegrasi: Kwitansi WhatsApp Otomatis & Laporan PDF Instan dalam 1 Klik.">
 
-<!-- Ikon Standar Browser & Android -->
-<link rel="icon" type="image/png" href="https://i.ibb.co.com/tT4X06X8/logo-fundraiser-alfurqon.png">
+    <link rel="icon" type="image/png" href="https://i.ibb.co.com/tT4X06X8/logo-fundraiser-alfurqon.png">
+    <link rel="apple-touch-icon" href="https://i.ibb.co.com/tT4X06X8/logo-fundraiser-alfurqon.png">
+    
+    <link rel="manifest" href="manifest.json">
 
-<!-- Ikon Khusus Apple/iOS -->
-<link rel="apple-touch-icon" href="https://i.ibb.co.com/tT4X06X8/logo-fundraiser-alfurqon.png">
-
-<!-- Pengaturan Mode Aplikasi (PWA) -->
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Al Furqon">
-<meta name="theme-color" content="#059669">
-
-<!-- Open Graph: Thumbnail WhatsApp & Media Sosial -->
-<meta property="og:title" content="Al Furqon - Rumah Sedekah Digital">
-<meta property="og:description" content="Sistem manajemen donasi cerdas untuk kemaslahatan umat.">
-<meta property="og:image" content="https://i.ibb.co.com/tT4X06X8/logo-fundraiser-alfurqon.png">
-<meta property="og:type" content="website">
-<!-- ========================================== -->
-<!-- SELESAI: IDENTITAS, PWA & SEO AL FURQON -->
-<!-- ========================================== -->
-
-<!-- Twitter Card (Summary mode cocok untuk 1:1) -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fundraiser Smart System">
-<meta name="twitter:image" content="https://github.com/dany29326-prog/fundraiser/blob/main/thumbnail-pro.png?raw=true">
-    <!-- ========================================== -->
-    <!-- SELESAI: SEO & OPEN GRAPH                  -->
-    <!-- ========================================== -->
-
-    <!-- Konfigurasi PWA (Mobile App Behavior) -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Al Furqon">
     <meta name="theme-color" content="#059669">
-    <meta name="apple-mobile-web-app-title" content="Fundraiser">
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2904/2904879.png">
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2904/2904879.png">
 
-    <!-- External Libraries -->
+    <meta property="og:title" content="Al Furqon - Rumah Sedekah Digital">
+    <meta property="og:description" content="Sistem manajemen donasi cerdas untuk kemaslahatan umat.">
+    <meta property="og:image" content="https://i.ibb.co.com/tT4X06X8/logo-fundraiser-alfurqon.png">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Fundraiser Smart System">
+    <meta name="twitter:image" content="https://github.com/dany29326-prog/fundraiser/blob/main/thumbnail-pro.png?raw=true">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -66,62 +42,48 @@
 </head>
 <body class="bg-slate-50 min-h-screen text-slate-800">
 
-    <!-- === BAGIAN LOGIN PAGE: BRANDING AL FURQON === -->
-<!-- === LOGIN PAGE: FINAL CLEAN VERSION === -->
-<div id="loginPage" class="flex flex-col items-center justify-center min-h-screen p-6 animate-in bg-slate-50">
-    <div class="bg-white p-8 rounded-[2.5rem] shadow-2xl shadow-emerald-100 w-full max-w-sm text-center border border-emerald-50">
-        
-        <!-- HEADER: HANYA SATU LOGO DAN SATU JUDUL -->
-        <div class="text-center mb-10">
-            <!-- Kontainer Logo Gambar -->
-            <div class="w-28 h-28 bg-white rounded-[2.5rem] flex items-center justify-center mx-auto shadow-2xl shadow-emerald-100 mb-6 border-4 border-emerald-50 overflow-hidden transition-transform hover:scale-105 duration-300">
-                <img src="https://i.ibb.co.com/wFDBPfFs/Chat-GPT-Image-Apr-30-2026-03-41-39-PM.png" 
-                     alt="Logo Al Furqon" 
-                     class="w-full h-full object-contain p-3">
-            </div>
+    <div id="loginPage" class="flex flex-col items-center justify-center min-h-screen p-6 animate-in bg-slate-50">
+        <div class="bg-white p-8 rounded-[2.5rem] shadow-2xl shadow-emerald-100 w-full max-w-sm text-center border border-emerald-50">
             
-            <!-- Nama Lembaga -->
-            <h1 class="text-3xl font-black text-slate-900 mb-1 tracking-tighter uppercase">AL FURQON</h1>
-            <p class="text-emerald-700 text-[10px] tracking-[0.3em] font-extrabold uppercase">Rumah Sedekah Digital</p>
-            
-            <!-- Garis Aksen Halus -->
-            <div class="w-12 h-1.5 bg-emerald-600 mx-auto mt-4 rounded-full opacity-20"></div>
-        </div>
-
-        <!-- FORM INPUT -->
-        <div class="space-y-4">
-            <div class="text-left">
-                <label class="text-[10px] font-extrabold text-slate-400 ml-2 mb-1 block uppercase">Nama Petugas</label>
-                <input type="text" id="nama" placeholder="Masukkan Nama" 
-                       class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:ring-2 focus:ring-emerald-600 transition-all text-sm font-medium">
-            </div>
-            
-            <div class="text-left">
-                <label class="text-[10px] font-extrabold text-slate-400 ml-2 mb-1 block uppercase">Kata Sandi</label>
-                <div class="relative">
-                    <input type="password" id="password" placeholder="••••••••" 
-                           class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:ring-2 focus:ring-emerald-600 transition-all text-sm">
-                    <button onclick="togglePassword()" class="absolute right-4 top-4 text-slate-400">
-                        <i id="eyeIcon" class="fa fa-eye"></i>
-                    </button>
+            <div class="text-center mb-10">
+                <div class="w-28 h-28 bg-white rounded-[2.5rem] flex items-center justify-center mx-auto shadow-2xl shadow-emerald-100 mb-6 border-4 border-emerald-50 overflow-hidden transition-transform hover:scale-105 duration-300">
+                    <img src="https://i.ibb.co.com/wFDBPfFs/Chat-GPT-Image-Apr-30-2026-03-41-39-PM.png" alt="Logo Al Furqon" class="w-full h-full object-contain p-3">
                 </div>
+                
+                <h1 class="text-3xl font-black text-slate-900 mb-1 tracking-tighter uppercase">AL FURQON</h1>
+                <p class="text-emerald-700 text-[10px] tracking-[0.3em] font-extrabold uppercase">Rumah Sedekah Digital</p>
+                <div class="w-12 h-1.5 bg-emerald-600 mx-auto mt-4 rounded-full opacity-20"></div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="text-left">
+                    <label class="text-[10px] font-extrabold text-slate-400 ml-2 mb-1 block uppercase">Nama Petugas</label>
+                    <input type="text" id="nama" placeholder="Masukkan Nama" class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:ring-2 focus:ring-emerald-600 transition-all text-sm font-medium">
+                </div>
+                
+                <div class="text-left">
+                    <label class="text-[10px] font-extrabold text-slate-400 ml-2 mb-1 block uppercase">Kata Sandi</label>
+                    <div class="relative">
+                        <input type="password" id="password" placeholder="••••••••" class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:ring-2 focus:ring-emerald-600 transition-all text-sm">
+                        <button onclick="togglePassword()" class="absolute right-4 top-4 text-slate-400">
+                            <i id="eyeIcon" class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex items-center ml-2 py-2">
+                    <input type="checkbox" id="rememberMe" class="w-4 h-4 text-emerald-600 border-slate-300 rounded focus:ring-emerald-500">
+                    <label for="rememberMe" class="ml-2 text-xs font-bold text-slate-500 cursor-pointer">Ingat Saya</label>
+                </div>
+                
+                <button onclick="handleAuth()" id="btnLogin" class="w-full bg-emerald-700 text-white font-bold py-4 rounded-2xl shadow-xl shadow-emerald-100 hover:bg-emerald-800 active:scale-95 transition-all uppercase text-sm tracking-widest">
+                    Masuk ke Sistem
+                </button>
             </div>
             
-            <div class="flex items-center ml-2 py-2">
-                <input type="checkbox" id="rememberMe" class="w-4 h-4 text-emerald-600 border-slate-300 rounded focus:ring-emerald-500">
-                <label for="rememberMe" class="ml-2 text-xs font-bold text-slate-500 cursor-pointer">Ingat Saya</label>
-            </div>
-            
-            <button onclick="handleAuth()" id="btnLogin" 
-                    class="w-full bg-emerald-700 text-white font-bold py-4 rounded-2xl shadow-xl shadow-emerald-100 hover:bg-emerald-800 active:scale-95 transition-all uppercase text-sm tracking-widest">
-                Masuk ke Sistem
-            </button>
+            <p class="mt-8 text-[9px] text-slate-300 font-bold tracking-widest uppercase">© 2026 Al Furqon - Tawangmangu</p>
         </div>
-        
-        <!-- FOOTER IDENTITAS -->
-        <p class="mt-8 text-[9px] text-slate-300 font-bold tracking-widest uppercase">© 2026 Al Furqon - Tawangmangu</p>
     </div>
-</div>
 
     <div id="dashboardPage" class="hidden animate-in">
         <div class="bg-emerald-600 p-8 rounded-b-[3.5rem] shadow-lg text-white relative overflow-hidden">
@@ -211,35 +173,33 @@
     </div>
 
     <script>
-        const API_URL = "https://script.google.com/macros/s/AKfycbza0t02BmjjxJYNKbGchKIEJCFNZpajCx3AtLg8RvpgrmEjk_IkN-SuT47XmWAfPK4_wQ/exec"; 
+        // PENTING: Ganti string ini dengan URL App Script hasil Deploy terbaru (akses "Anyone")
+        const API_URL = "https://script.google.com/macros/s/AKfycbyIryt1g9AB3O5L4HN47z6ID6KkUJBeh7v5kjfttstvXoiVXoJrTkznHZK8XZXAHMWVCQ/exec"; 
         let USER_SESSION = null;
         let SELECTED_DONATUR_DATA = null;
 
-    // --- MULAI: FUNGSI FORMAT WA (STEP A) ---
-    function formatWA(noHp) {
-        if (!noHp) return '';
-        // Sanitasi: Ambil hanya angka saja
-        let cleaned = noHp.toString().replace(/[^0-9]/g, ''); 
-        // Logika Konversi: 08xx atau 8xx menjadi 628xx
-        if (cleaned.startsWith('0')) {
-            return '62' + cleaned.substring(1);
-        } else if (cleaned.startsWith('8')) {
-            return '62' + cleaned;
+        // --- MASTER FETCH API (Anti CORS) ---
+        async function fetchAPI(action, payloadData = {}) {
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8",
+                },
+                body: JSON.stringify({ action: action, payload: payloadData })
+            });
+            return await response.json();
         }
-        return cleaned;
-    }
-    // --- SELESAI: FUNGSI FORMAT WA ---
 
-    window.onload = function() {
-    const savedNama = localStorage.getItem('fundraiser_nama');
-    const savedPass = localStorage.getItem('fundraiser_pass');
-    if (savedNama && savedPass) {
-        document.getElementById('nama').value = savedNama;
-        document.getElementById('password').value = savedPass;
-        document.getElementById('rememberMe').checked = true;
-    }
-};
+        // --- FORMAT NOMOR WA ---
+        function formatWA(noHp) {
+            if (!noHp) return '';
+            let cleaned = noHp.toString().replace(/[^0-9]/g, ''); 
+            if (cleaned.startsWith('0')) return '62' + cleaned.substring(1);
+            if (cleaned.startsWith('8')) return '62' + cleaned;
+            return cleaned;
+        }
 
+        // --- INIT & ONLOAD (Dirapikan) ---
         window.onload = function() {
             const savedNama = localStorage.getItem('fundraiser_nama');
             const savedPass = localStorage.getItem('fundraiser_pass');
@@ -262,42 +222,47 @@
             }
         }
 
+        // --- LOGIN ---
         async function handleAuth() {
             const nama = document.getElementById('nama').value;
             const password = document.getElementById('password').value;
             const rememberMe = document.getElementById('rememberMe').checked;
 
             if(!nama || !password) return Swal.fire('Opps!', 'Lengkapi data login!', 'warning');
+            
             const btn = document.getElementById('btnLogin');
-            btn.disabled = true; btn.innerHTML = '<i class="fa fa-circle-notch animate-spin"></i>';
+            btn.disabled = true; 
+            btn.innerHTML = '<i class="fa fa-circle-notch animate-spin"></i>';
 
             try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({ action: 'login', payload: { nama, password } })
-                });
-                const res = await response.json();
+                const res = await fetchAPI('login', { nama, password });
+                
                 if(res.success) {
                     if(rememberMe) {
                         localStorage.setItem('fundraiser_nama', nama);
                         localStorage.setItem('fundraiser_pass', password);
+                    } else {
+                        localStorage.removeItem('fundraiser_nama');
+                        localStorage.removeItem('fundraiser_pass');
                     }
                     USER_SESSION = res.data;
                     document.getElementById('loginPage').classList.add('hidden');
                     document.getElementById('dashboardPage').classList.remove('hidden');
                     initDashboard();
-                } else { Swal.fire('Gagal', 'Nama/Password salah', 'error'); }
-            } catch (e) { Swal.fire('Error', 'Cek internet Kak', 'error'); }
-            finally { btn.disabled = false; btn.innerText = "Masuk ke Sistem"; }
+                } else { 
+                    Swal.fire('Gagal', res.message || 'Nama/Password salah', 'error'); 
+                }
+            } catch (e) { 
+                Swal.fire('Error', 'Gagal koneksi ke server database.', 'error'); 
+            } finally { 
+                btn.disabled = false; btn.innerText = "Masuk ke Sistem"; 
+            }
         }
 
+        // --- DASHBOARD ---
         async function initDashboard() {
             try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({ action: 'getDashboard', payload: { fundraiserId: USER_SESSION.fundraiserId } })
-                });
-                const res = await response.json();
+                const res = await fetchAPI('getDashboard', { fundraiserId: USER_SESSION.fundraiserId });
                 const d = res.data;
                 document.getElementById('userDisplay').innerText = USER_SESSION.nama;
                 document.getElementById('totalBulan').innerText = "Rp " + d.totalBulanIni.toLocaleString('id-ID');
@@ -305,7 +270,9 @@
                 document.getElementById('hariIniDisplay').innerText = "Hari Ini: Rp " + d.totalHariIni.toLocaleString('id-ID');
                 document.getElementById('persentase').innerText = d.capaian;
                 document.getElementById('progressBar').style.width = d.capaian;
-            } catch (e) { console.error("Dashboard error"); }
+            } catch (e) { 
+                console.error("Dashboard error", e); 
+            }
         }
 
         function aturFormDonatur() {
@@ -330,55 +297,97 @@
             const keyword = document.getElementById('searchKeyword').value;
             const infoBox = document.getElementById('hasilPencarian');
             if(!keyword) return;
-            infoBox.innerHTML = "🔍 Mencari..."; infoBox.classList.remove('hidden');
+            
+            infoBox.innerHTML = "🔍 Mencari..."; 
+            infoBox.classList.remove('hidden');
+            
             try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({ action: 'searchDonatur', payload: { keyword } })
-                });
-                const res = await response.json();
+                const res = await fetchAPI('searchDonatur', { keyword });
                 if (res.success && res.data.found) {
                     SELECTED_DONATUR_DATA = res.data;
                     infoBox.innerHTML = `<p class="text-blue-700 font-bold">✅ DITEMUKAN!</p><p>${res.data.id} - ${res.data.nama}</p>`;
-                } else { infoBox.innerHTML = `<p class="text-red-500">❌ Tidak ditemukan.</p>`; }
-            } catch (e) { infoBox.innerHTML = "Error koneksi."; }
+                } else { 
+                    infoBox.innerHTML = `<p class="text-red-500">❌ Tidak ditemukan.</p>`; 
+                }
+            } catch (e) { 
+                infoBox.innerHTML = "Error koneksi."; 
+            }
         }
 
         async function handleSubmitDonasi() {
             const jenis = document.getElementById('jenisDonatur').value;
             let nama, noHp, idDonatur = "";
+            
             if (jenis === 'Rutin') {
                 if (!SELECTED_DONATUR_DATA) return Swal.fire('Opps!', 'Cari donatur dulu!', 'warning');
-                nama = SELECTED_DONATUR_DATA.nama; noHp = SELECTED_DONATUR_DATA.noHp; idDonatur = SELECTED_DONATUR_DATA.id;
+                nama = SELECTED_DONATUR_DATA.nama; 
+                noHp = SELECTED_DONATUR_DATA.noHp; 
+                idDonatur = SELECTED_DONATUR_DATA.id;
             } else {
-                nama = document.getElementById('namaDonatur').value; noHp = document.getElementById('noHpDonatur').value;
+                nama = document.getElementById('namaDonatur').value; 
+                noHp = document.getElementById('noHpDonatur').value;
                 if (!nama || !noHp) return Swal.fire('Opps!', 'Lengkapi Nama & WA!', 'warning');
             }
+            
             const btn = document.getElementById('btnSubmit');
             const nominal = document.getElementById('nominal').value;
             if(!nominal) return Swal.fire('Opps!', 'Isi nominal dulu Kak!', 'warning');
-            btn.disabled = true; btn.innerText = "Menyimpan...";
+            
+            btn.disabled = true; 
+            btn.innerText = "Menyimpan...";
+            
             try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({ action: 'submitTransaksi', payload: { fundraiserId: USER_SESSION.fundraiserId, namaFundraiser: USER_SESSION.nama, jenisDonatur: jenis, namaDonatur: nama, noHpDonatur: noHp, idDonatur: idDonatur, nominal: nominal, kategori: document.getElementById('kategori').value } })
-                });
-                const res = await response.json();
-                if(res.success) { Swal.fire('Sukses!', 'Donasi tercatat.', 'success').then(() => { window.open(res.data.waLink, '_blank'); location.reload(); }); }
-            } catch (e) { Swal.fire('Error', 'Gagal simpan.', 'error'); }
-            finally { btn.disabled = false; btn.innerText = "SIMPAN & GENERATE WA"; }
+                const payload = { 
+                    fundraiserId: USER_SESSION.fundraiserId, 
+                    namaFundraiser: USER_SESSION.nama, 
+                    jenisDonatur: jenis, 
+                    namaDonatur: nama, 
+                    noHpDonatur: noHp, 
+                    idDonatur: idDonatur, 
+                    nominal: nominal, 
+                    kategori: document.getElementById('kategori').value 
+                };
+                
+                const res = await fetchAPI('submitTransaksi', payload);
+                
+                if(res.success) { 
+                    Swal.fire('Sukses!', 'Donasi tercatat.', 'success').then(() => { 
+                        window.open(res.data.waLink, '_blank'); 
+                        location.reload(); 
+                    }); 
+                } else {
+                    Swal.fire('Gagal', res.message, 'error');
+                }
+            } catch (e) { 
+                Swal.fire('Error', 'Gagal menyimpan data.', 'error'); 
+            } finally { 
+                btn.disabled = false; 
+                btn.innerText = "SIMPAN & GENERATE WA"; 
+            }
         }
 
         async function openDonaturPage() {
             document.getElementById('dashboardPage').classList.add('hidden');
             document.getElementById('donaturPage').classList.remove('hidden');
             const container = document.getElementById('listDonaturContainer');
+            
+            // Tampilkan animasi loading
             container.innerHTML = `<div class="text-center p-10 text-slate-400"><i class="fa fa-circle-notch animate-spin text-2xl"></i></div>`;
+            
             try {
-                const response = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'getDonaturList' }) });
-                const res = await response.json();
-                if(res.success) renderDonaturList(res.data);
-            } catch (e) { Swal.fire('Error', 'Gagal ambil data', 'error'); }
+                const res = await fetchAPI('getDonaturList');
+                
+                if(res.success) {
+                    renderDonaturList(res.data);
+                } else {
+                    // JIKA GAGAL: Hentikan loading dan tampilkan pesan error dari GAS
+                    container.innerHTML = `<div class="text-center p-10 text-red-500 text-sm font-bold">❌ Error: ${res.message}</div>`;
+                    Swal.fire('Data Gagal Ditarik', res.message, 'error');
+                }
+            } catch (e) { 
+                container.innerHTML = `<div class="text-center p-10 text-red-500 text-sm font-bold">❌ Gagal koneksi ke server</div>`;
+                Swal.fire('Error Koneksi', 'Gagal mengambil data dari server', 'error'); 
+            }
         }
 
         function renderDonaturList(data) {
@@ -397,8 +406,13 @@
             });
         }
 
-        function backToDashboard() { document.getElementById('donaturPage').classList.add('hidden'); document.getElementById('dashboardPage').classList.remove('hidden'); }
-        function toggleForm() { document.getElementById('formDonasi').classList.toggle('hidden'); }
+        function backToDashboard() { 
+            document.getElementById('donaturPage').classList.add('hidden'); 
+            document.getElementById('dashboardPage').classList.remove('hidden'); 
+        }
+        function toggleForm() { 
+            document.getElementById('formDonasi').classList.toggle('hidden'); 
+        }
         function filterTabelDonatur() {
             const input = document.getElementById('filterDonatur').value.toUpperCase();
             const items = document.getElementsByClassName('donatur-item');
@@ -409,112 +423,81 @@
         }
 
         function tambahDonatur() {
-    Swal.fire({
-        title: 'Donatur Baru',
-        html: `<input id="sw-nama" class="swal2-input" placeholder="Nama Lengkap">
-               <input id="sw-hp" class="swal2-input" placeholder="WhatsApp (08...)">
-               <input id="sw-almt" class="swal2-input" placeholder="Alamat (Opsional)">`,
-        confirmButtonText: 'Simpan', 
-        showCancelButton: true,
-        preConfirm: () => {
-            const nama = document.getElementById('sw-nama').value; 
-            const hp = document.getElementById('sw-hp').value;
-            
-            if(!nama || !hp) return Swal.showValidationMessage('Nama & WA wajib diisi!');
-            
-            // --- LOGIKA ARCHITECT: SANITASI DI HULU ---
-            // Kita gunakan formatWA agar yang dikirim ke database sudah 62xxx
-            const noHpClean = formatWA(hp); 
-            
-            return { 
-                nama: nama, 
-                noHp: noHpClean, 
-                alamat: document.getElementById('sw-almt').value 
-            }
-        }
-    }).then(async (res) => {
-        if (res.isConfirmed) {
-            Swal.fire({title: 'Menyimpan...', didOpen: () => Swal.showLoading()});
-            
-            // Payload yang dikirim sekarang sudah bersih (noHp: 628xxx)
-            const resp = await fetch(API_URL, { 
-                method: 'POST', 
-                body: JSON.stringify({ 
-                    action: 'addDonatur', 
-                    payload: res.value 
-                }) 
+            Swal.fire({
+                title: 'Donatur Baru',
+                html: `<input id="sw-nama" class="swal2-input" placeholder="Nama Lengkap">
+                       <input id="sw-hp" class="swal2-input" placeholder="WhatsApp (08...)">
+                       <input id="sw-almt" class="swal2-input" placeholder="Alamat (Opsional)">`,
+                confirmButtonText: 'Simpan', 
+                showCancelButton: true,
+                preConfirm: () => {
+                    const nama = document.getElementById('sw-nama').value; 
+                    const hp = document.getElementById('sw-hp').value;
+                    if(!nama || !hp) return Swal.showValidationMessage('Nama & WA wajib diisi!');
+                    return { nama: nama, noHp: formatWA(hp), alamat: document.getElementById('sw-almt').value }
+                }
+            }).then(async (res) => {
+                if (res.isConfirmed) {
+                    Swal.fire({title: 'Menyimpan...', didOpen: () => Swal.showLoading()});
+                    const final = await fetchAPI('addDonatur', res.value);
+                    if(final.success) { 
+                        Swal.fire('Berhasil', 'Donatur ditambahkan', 'success'); 
+                        if (typeof openDonaturPage === "function") openDonaturPage(); 
+                    } else {
+                        Swal.fire('Gagal', final.message, 'error');
+                    }
+                }
             });
-            
-            const final = await resp.json();
-            if(final.success) { 
-                Swal.fire('Berhasil', 'Donatur ditambahkan', 'success'); 
-                // Pastikan fungsi ini ada untuk merefresh daftar di layar
-                if (typeof openDonaturPage === "function") openDonaturPage(); 
-            } else {
-                Swal.fire('Gagal', final.message, 'error');
-            }
         }
-    });
-}
+
         async function downloadLaporanPDF() {
-    // 1. Munculkan Popup pilihan tanggal
-    const { value: formValues } = await Swal.fire({
-        title: 'Pilih Periode Laporan',
-        html:
-            '<label class="text-xs font-bold text-slate-400 uppercase">Tanggal Mulai</label>' +
-            '<input id="tgl-mulai" type="date" class="swal2-input">' +
-            '<label class="text-xs font-bold text-slate-400 uppercase">Tanggal Sampai</label>' +
-            '<input id="tgl-sampai" type="date" class="swal2-input">',
-        focusConfirm: false,
-        showCancelButton: true,
-        confirmButtonText: 'Generate PDF',
-        preConfirm: () => {
-            return {
-                startDate: document.getElementById('tgl-mulai').value,
-                endDate: document.getElementById('tgl-sampai').value
-            }
-        }
-    });
+            const { value: formValues } = await Swal.fire({
+                title: 'Pilih Periode Laporan',
+                html:
+                    '<label class="text-xs font-bold text-slate-400 uppercase">Tanggal Mulai</label>' +
+                    '<input id="tgl-mulai" type="date" class="swal2-input">' +
+                    '<label class="text-xs font-bold text-slate-400 uppercase">Tanggal Sampai</label>' +
+                    '<input id="tgl-sampai" type="date" class="swal2-input">',
+                focusConfirm: false,
+                showCancelButton: true,
+                confirmButtonText: 'Generate PDF',
+                preConfirm: () => {
+                    return { startDate: document.getElementById('tgl-mulai').value, endDate: document.getElementById('tgl-sampai').value }
+                }
+            });
 
-    if (!formValues || !formValues.startDate || !formValues.endDate) return;
+            if (!formValues || !formValues.startDate || !formValues.endDate) return;
 
-    Swal.fire({
-        title: 'Menyiapkan PDF...',
-        html: 'Merangkum data periode ' + formValues.startDate + ' s/d ' + formValues.endDate,
-        allowOutsideClick: false,
-        didOpen: () => Swal.showLoading()
-    });
+            Swal.fire({
+                title: 'Menyiapkan PDF...',
+                html: 'Merangkum data periode ' + formValues.startDate + ' s/d ' + formValues.endDate,
+                allowOutsideClick: false,
+                didOpen: () => Swal.showLoading()
+            });
 
-    try {
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            body: JSON.stringify({ 
-                action: 'downloadLaporan', 
-                payload: { 
+            try {
+                const payload = { 
                     fundraiserId: USER_SESSION.fundraiserId, 
                     namaFundraiser: USER_SESSION.nama,
-                    startDate: formValues.startDate, // YYYY-MM-DD
-                    endDate: formValues.endDate      // YYYY-MM-DD
-                } 
-            })
-        });
-        const res = await response.json();
-        
-        if(res.success) {
-            const link = document.createElement('a');
-            link.href = 'data:application/pdf;base64,' + res.data.base64;
-            link.download = res.data.fileName;
-            link.click();
-            Swal.fire('Berhasil!', 'Laporan periode berhasil diunduh.', 'success');
-        } else {
-            throw new Error(res.message);
+                    startDate: formValues.startDate,
+                    endDate: formValues.endDate
+                };
+                
+                const res = await fetchAPI('downloadLaporan', payload);
+                
+                if(res.success) {
+                    const link = document.createElement('a');
+                    link.href = 'data:application/pdf;base64,' + res.data.base64;
+                    link.download = res.data.fileName;
+                    link.click();
+                    Swal.fire('Berhasil!', 'Laporan periode berhasil diunduh.', 'success');
+                } else {
+                    throw new Error(res.message);
+                }
+            } catch (e) {
+                Swal.fire('Gagal', 'Terjadi kesalahan: ' + e.message, 'error');
+            }
         }
-    } catch (e) {
-        Swal.fire('Gagal', 'Terjadi kesalahan: ' + e.message, 'error');
-    }
-}
-        // --- SAMPAI DI SINI ---
-
     </script>
 </body>
 </html>
